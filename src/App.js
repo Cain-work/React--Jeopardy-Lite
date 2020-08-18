@@ -1,26 +1,25 @@
-import React, {Component} from 'react';
+import React from 'react';
+import { Route } from 'react-router-dom';
+import './App.css';
 import Welcome from './components/welcome/Welcom';
 import Clock from './components/clock/Clock';
 import Contact from './components/contact/Contact';
 import Navigation from './components/navigation/Navigation';
-import { Route } from 'react-router-dom';
 
-class App extends Component {
-  render() {
+
+function App() {
     return (
-      <div>
-        { Component }
-        <Navigation />
-        <Route
-          exact
-          path="/"
-          render={(props) => <Welcome {...props} name="eric" />}
+      <div className="App">
+        <Navigation/>
+        <Route exact 
+        path="/" 
+        render={(props) => <Welcome {... props} name='Robert'/>} 
         />
-        <Route path="./clock/Clock.js" component={Clock} />
-        <Route path="./contact/Contact.js" component={Contact} />
+        <Route path="/clock" component={Clock} />
+        <Route path="/contact" component={Contact} />
       </div>
     );
-  }
+  
 }
 
 export default App;
