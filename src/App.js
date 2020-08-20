@@ -11,6 +11,10 @@ function App() {
     return (
       <div className="App">
         <Navigation/>
+        <Route exact
+        path="/welcome/:name"
+        render={(props.match.params.name) => <Welcome {...props} name=""/>}
+        />
         <Route exact 
         path="/" 
         render={(props) => <Welcome {... props} name='Robert'/>} 
