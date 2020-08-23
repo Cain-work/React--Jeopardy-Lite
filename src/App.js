@@ -11,8 +11,8 @@ function App() {
     return (
       <div className="App">
         <Navigation/>
-        <switch>
-        <Route 
+        
+        <Route exact
         path="/welcome/:name"
         render={(props) => <Welcome {...props} name= {props.match.params.name} />}
         />
@@ -20,7 +20,10 @@ function App() {
         path="/" 
         render={(props) => <Welcome {... props} name='Robert'/>} 
         />
-        
+        <switch>
+        <Route exact
+        path="/welcome/"
+        render={(props) => <Welcome {...props} name= "404 no name stated"/>} />
         </switch>
         <Route path="/clock" component={Clock} />
         <Route path="/contact" component={Contact} />
