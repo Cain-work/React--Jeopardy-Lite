@@ -11,14 +11,17 @@ function App() {
     return (
       <div className="App">
         <Navigation/>
-        <Route exact
+        <switch>
+        <Route 
         path="/welcome/:name"
-        render={(props.match.params.name) => <Welcome {...props} name=""/>}
+        render={(props) => <Welcome {...props} name= {props.match.params.name} />}
         />
         <Route exact 
         path="/" 
         render={(props) => <Welcome {... props} name='Robert'/>} 
         />
+        
+        </switch>
         <Route path="/clock" component={Clock} />
         <Route path="/contact" component={Contact} />
       </div>
