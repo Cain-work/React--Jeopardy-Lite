@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Welcome from './components/welcome/Welcom';
 import Clock from './components/clock/Clock';
@@ -12,8 +12,8 @@ function App() {
     return (
       <div className="App">
         <Navigation/>
-        
-        <Route exact
+        <Switch>
+        <Route 
         path="/welcome/:name"
         render={(props) => <Welcome {...props} name= {props.match.params.name} />}
         />
@@ -21,14 +21,13 @@ function App() {
         path="/" 
         render={(props) => <Welcome {... props} name='Robert'/>} 
         />
-        <switch>
-        <Route exact
-        path="/welcome/"
-        render={(props) => <Welcome {...props} name= "404 no name stated"/>} />
-        </switch>
+        
         <Route path="/clock" component={Clock} />
         <Route path="/contact" component={Contact} />
         <Route path="/jeopardy" component={Jeopardy} />
+        <Route
+        render={(props) => <Welcome {...props} name= "404 no name stated"/>} />
+        </Switch>
       </div>
     );
   

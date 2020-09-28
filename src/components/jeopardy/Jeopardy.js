@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-//import our service
 import JeopardyService from "../../jeopardyService";
+
 class Jeopardy extends Component {
-    //set our initial state and set up our service as this.client on this component
+
     constructor(props) {
         super(props);
         this.client = new JeopardyService();
@@ -28,43 +28,67 @@ class Jeopardy extends Component {
                     "clues_count": null
 
                 }]
-
             },
 
             score: 0,
-            FormData: {
+            formData: {
                 answer: "",
             },
         }
     }
-    //get a new random question from the API and add it to the data object in state
-    getNewQuestion() {
-        return this.client.getQuestion().then(result => {
-            this.setState({
-                data: result.data[0]
-            })
+    handleChange = (event) => {
+        const formData = { ...this.state.formData };
+        formData[event.target.name] = event.target.value;
+
+        this.setState({ formData });
+    }
+    handleSubmit = () => {
+        event.preventDefault();
+
+        if ((formData) === (this.state.data.answer)) {
+
+            (this.state.data.value) + (this.state.score)
+            return this.setState.score = 
+        
+            else
+            ((this.state.score) - (this.state.data.value))
+        return this.setState.score = 
+            }
+}
+this.setState{
+    submitted: true
+}
+
+//get a new random question from the API and add it to the data object in state
+getNewQuestion() {
+    return this.client.getQuestion().then(result => {
+        this.setState({
+            data: result.data[0]
         })
-    }
-    //when the component mounts, get a the first question
-    componentDidMount() {
-        this.getNewQuestion();
-    }
-    //display the results on the screen
-    render() {
-        return (
-            <div>
-                <strong>Question:</strong>{this.state.data.question}<br />,
-                <strong>Category:</strong>{this.state.data.category.title}<br />,
-                <strong>Value:</strong>{this.state.data.value},<br />
+    })
+}
+//when the component mounts, get a the first question
+componentDidMount() {
+    this.getNewQuestion();
+}
+//display the results on the screen
+render() {
+    return (
+        <div>
+            <strong>Question:</strong>{this.state.data.question}<br />,
+            <strong>Category:</strong>{this.state.data.category.title}<br />,
+            <strong>Value:</strong>{this.state.data.value},<br />
+            <form onSubmit={this.handleSubmit}>
                 <label htmlFor="answer">Answer</label>
                 <input type="text"
-                    answer=""
-                    value=""
-                /><br/>
+                    name="answer"
+                    onChange={this.handleChange}
+                /> <br />
                 <button>Submit</button>
-
-            </div>
-        );
-    }
+            </form>
+            <strong>Score:</strong>{this.state.score}
+        </div>
+    );
+}
 }
 export default Jeopardy;
