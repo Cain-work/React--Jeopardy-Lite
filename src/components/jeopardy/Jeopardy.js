@@ -28,36 +28,37 @@ class Jeopardy extends Component {
                     "clues_count": null
 
                 }]
-            },
-
-            score: 0,
-            formData: {
-                answer: "",
-            },
-        }
-    }
-    handleChange = (event) => {
-        const formData = { ...this.state.formData };
-        formData[event.target.name] = event.target.value;
-
-        this.setState({ formData });
-    }
-    handleSubmit = () => {
-        event.preventDefault();
-
-        if ((formData) === (this.state.data.answer)) {
-
-            (this.state.data.value) + (this.state.score)
-            return this.setState.score = 
-        
-            else
-            ((this.state.score) - (this.state.data.value))
-        return this.setState.score = 
             }
+        }
+        Score = 0,
+
+            formData = {
+                answer: ""
+            }
+    }
+};
+handleChange = (event) => {
+    const formData = { ...this.state.formData };
+    formData[event.target.name] = event.target.value;
+
+    this.setState({ formData });
 }
-this.setState{
-    submitted: true
+
+handleSubmit = () => {
+    event.preventDefault();
+
+    if ((formData) === (this.state.data.answer)) {
+
+        //(this.state.data.value) + (this.state.Score)
+        return (this.setState.Score) = (this.state.data.value) + score;
+    }
+    else {
+        ((this.state.score) - (this.state.data.value))
+        return this.setState.score = (this.stat.data.value) - score;
+    }
 }
+
+
 
 //get a new random question from the API and add it to the data object in state
 getNewQuestion() {
@@ -86,9 +87,9 @@ render() {
                 /> <br />
                 <button>Submit</button>
             </form>
-            <strong>Score:</strong>{this.state.score}
+            <strong>Score:</strong>{this.state.Score}
         </div>
     );
 }
-}
-export default Jeopardy;
+
+export default Jeopardy
